@@ -5,26 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4435e15-a144-4b81-8b62-b56afef556f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/NekoShare/Controllers/AccountController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NekoShare/Controllers/BaseApiController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NekoShare/DTOs/Authenticate/AuthenticateRequestDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NekoShare/DTOs/Authenticate/AuthenticateResponseDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NekoShare/Interfaces/ITokenService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NekoShare/Services/TokenService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NekoShare/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NekoShare/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/Controllers/UsersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/Controllers/WeatherForecastController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/Migrations/DataContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/Data/Migrations/DataContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Entities/AppUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/Entities/AppUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/NekoShare.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/NekoShare.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/neko.db" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/neko.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/neko.db-shm" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/neko.db-shm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/app/_models/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NekoShare/neko.db-wal" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/neko.db-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +27,9 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2qur1FksewjP6bHf3nEvEiBOJHV" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -53,6 +44,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.idesettings.emmet",
     "ts.external.directory.path": "E:\\Learn\\.NET Learn\\NekoShare\\client\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -72,7 +64,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1735523087915</updated>
-      <workItem from="1735523090241" duration="3091000" />
+      <workItem from="1735523090241" duration="12351000" />
     </task>
     <servers />
   </component>

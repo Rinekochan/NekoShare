@@ -1,25 +1,27 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
-import {NgFor} from '@angular/common';
+import {NavComponent} from './nav/nav.component';
+import {AccountService} from './_services/account.service';
+import {HomeComponent} from './home/home.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgFor],
+  imports: [NavComponent, HomeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  http = inject(HttpClient);
+  private accountService = inject(AccountService);
   title = 'Neko Share';
-  users: any;
 
   ngOnInit(): void {
-    this.http.get('https://localhost:5001/api/users').subscribe({
-      next: data => this.users = data,
-      error: err => console.log(err),
-      complete: () => console.log("Request has completed")
-    })
+    this.setCurrentUser();
+  }
+
+  setCurrentUser() {
+    const userString = localStorage.getItem('user');
+    if (!userString) return;
+    const user = JSON.parse(userString);
+    this.accountService.currentUser.set(user);
   }
 }
