@@ -1,17 +1,17 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">NekoShare</a>
+    <a class="navbar-brand" routerLink="/">NekoShare</a>
 
     @if (accountService.currentUser()) {
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Home</a>
+          <a routerLink="/members" routerLinkActive="active" class="nav-link" aria-current="page" href="#">Members</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Lists</a>
+          <a routerLink="/lists" routerLinkActive="active" class="nav-link" aria-current="page" href="#">Lists</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Messages</a>
+          <a routerLink="/messages" routerLinkActive="active" class="nav-link" aria-current="page" href="#">Messages</a>
         </li>
       </ul>
 
