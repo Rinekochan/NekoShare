@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4435e15-a144-4b81-8b62-b56afef556f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/neko.db" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/neko.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/neko.db-shm" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/neko.db-shm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/neko.db-wal" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/neko.db-wal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/nav/nav.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/nav/nav.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NekoShare/Controllers/BuggyController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NekoShare/DTOs/Authenticate/AuthenticateRequestDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/DTOs/Authenticate/AuthenticateRequestDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NekoShare/neko.db-shm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NekoShare/neko.db-wal" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +62,7 @@
       <updated>1735523087915</updated>
       <workItem from="1735523090241" duration="14878000" />
       <workItem from="1735607766370" duration="1471000" />
-      <workItem from="1735871628087" duration="2945000" />
+      <workItem from="1735871628087" duration="3678000" />
     </task>
     <servers />
   </component>
