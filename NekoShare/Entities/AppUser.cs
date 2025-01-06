@@ -1,5 +1,8 @@
-﻿namespace NekoShare.Entities;
+﻿using Microsoft.EntityFrameworkCore;
 
+namespace NekoShare.Entities;
+
+[Index(nameof(UserName), IsUnique = true)]
 public class AppUser
 {
     public int Id { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using NekoShare.Data;
 using NekoShare.DTOs;
@@ -14,8 +15,8 @@ public class AccountController(DataContext context, ITokenService tokenService) 
     [HttpPost("register")]
     public async Task<ActionResult<AuthenticateResponseDto>> Register(AuthenticateRequestDto authenticateRequestDto)
     {
-        if(await UserExists(authenticateRequestDto.Username)) return BadRequest("Username already exists");
-        
+        if (await UserExists(authenticateRequestDto.Username)) return BadRequest("Username already exists");
+
         using HMACSHA512 hmac = new HMACSHA512();
 
         AppUser user = new AppUser
@@ -25,8 +26,17 @@ public class AccountController(DataContext context, ITokenService tokenService) 
             PasswordSalt = hmac.Key
         };
 
-        context.Users.Add(user);
-        await context.SaveChangesAsync();
+        // Save changes might be conflicted in case of race condition
+        try
+        {
+            context.Users.Add(user);
+            await context.SaveChangesAsync();
+        }
+        catch (DbUpdateException e) when (e.InnerException is SqliteException sqlEx
+                                          && (sqlEx.SqliteErrorCode == 2601 || sqlEx.SqliteErrorCode == 2627))
+        {
+            return BadRequest("Username already exists");
+        }
 
         return new AuthenticateResponseDto()
         {
@@ -38,17 +48,18 @@ public class AccountController(DataContext context, ITokenService tokenService) 
     [HttpPost("login")]
     public async Task<ActionResult<AuthenticateResponseDto>> Login(AuthenticateRequestDto authenticateRequestDto)
     {
-        AppUser? user = await context.Users.FirstOrDefaultAsync(x => x.UserName == authenticateRequestDto.Username.ToLower());
-        
+        AppUser? user =
+            await context.Users.FirstOrDefaultAsync(x => x.UserName == authenticateRequestDto.Username.ToLower());
+
         if (user == null) return Unauthorized("Invalid username or password");
-        
+
         using HMACSHA512 hmac = new HMACSHA512(user.PasswordSalt);
-        
+
         var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(authenticateRequestDto.Password));
 
         for (int i = 0; i < computedHash.Length; i++)
         {
-            if(user.PasswordHash[i] != computedHash[i]) return Unauthorized("Invalid username or password");
+            if (user.PasswordHash[i] != computedHash[i]) return Unauthorized("Invalid username or password");
         }
 
         return new AuthenticateResponseDto()

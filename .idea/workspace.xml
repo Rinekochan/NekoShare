@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4435e15-a144-4b81-8b62-b56afef556f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/NekoShare/Controllers/BuggyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/DTOs/Authenticate/AuthenticateRequestDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare/DTOs/Authenticate/AuthenticateRequestDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/neko.db-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/neko.db-wal" beforeDir="false" />
-    </list>
+    <list default="true" id="d4435e15-a144-4b81-8b62-b56afef556f8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,7 +57,7 @@
       <updated>1735523087915</updated>
       <workItem from="1735523090241" duration="14878000" />
       <workItem from="1735607766370" duration="1471000" />
-      <workItem from="1735871628087" duration="3678000" />
+      <workItem from="1735871628087" duration="4270000" />
     </task>
     <servers />
   </component>
