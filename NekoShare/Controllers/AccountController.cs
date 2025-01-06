@@ -17,32 +17,34 @@ public class AccountController(DataContext context, ITokenService tokenService) 
     {
         if (await UserExists(authenticateRequestDto.Username)) return BadRequest("Username already exists");
 
-        using HMACSHA512 hmac = new HMACSHA512();
-
-        AppUser user = new AppUser
-        {
-            UserName = authenticateRequestDto.Username.ToLower(),
-            PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(authenticateRequestDto.Password)),
-            PasswordSalt = hmac.Key
-        };
-
-        // Save changes might be conflicted in case of race condition
-        try
-        {
-            context.Users.Add(user);
-            await context.SaveChangesAsync();
-        }
-        catch (DbUpdateException e) when (e.InnerException is SqliteException sqlEx
-                                          && (sqlEx.SqliteErrorCode == 2601 || sqlEx.SqliteErrorCode == 2627))
-        {
-            return BadRequest("Username already exists");
-        }
-
-        return new AuthenticateResponseDto()
-        {
-            Username = user.UserName,
-            Token = tokenService.CreateToken(user)
-        };
+        return Ok();
+        // using HMACSHA512 hmac = new HMACSHA512();
+        //
+        // AppUser user = new AppUser
+        // {
+        //     UserName = authenticateRequestDto.Username.ToLower(),
+        //     PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(authenticateRequestDto.Password)),
+        //     PasswordSalt = hmac.Key
+        // };
+        //
+        // // Save changes might be conflicted in case of race condition
+        // try
+        // {
+        //     context.Users.Add(user);
+        //     await context.SaveChangesAsync();
+        // }
+        // catch (DbUpdateException e) when (e.InnerException is SqliteException sqlEx
+        //                                   && (sqlEx.SqliteErrorCode == 2601 || sqlEx.SqliteErrorCode == 2627))
+        // {
+        //     return BadRequest("Username already exists");
+        // }
+        //
+        //
+        // return new AuthenticateResponseDto()
+        // {
+        //     Username = user.UserName,
+        //     Token = tokenService.CreateToken(user)
+        // };
     }
 
     [HttpPost("login")]
