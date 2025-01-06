@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NekoShare.Data;
 using NekoShare.Interfaces;
+using NekoShare.Repositories;
 using NekoShare.Services;
 
 namespace NekoShare.Extensions;
@@ -16,7 +17,10 @@ public static class ApplicationServiceExtensions
         });
         services.AddCors();
         services.AddScoped<ITokenService, TokenService>();
-
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IUserService, UserService>();
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        
         return services;
     }
 }

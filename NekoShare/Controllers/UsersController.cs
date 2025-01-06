@@ -1,28 +1,27 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using NekoShare.Data;
+using NekoShare.DTOs.User;
 using NekoShare.Entities;
+using NekoShare.Interfaces;
 
 namespace NekoShare.Controllers;
 
 [Authorize]
-public class UsersController(DataContext context) : BaseApiController
+public class UsersController(IUserService service) : BaseApiController
 {
-    [AllowAnonymous]
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
+    public async Task<ActionResult<IEnumerable<UserResponseDto>>> GetUsers()
     {
-        List<AppUser> users = await context.Users.ToListAsync();
-
-        return users;
+        var users = await service.GetUsersAsync();
+        
+        return Ok(users);
     }
 
-    [HttpGet("{id:int}")]
-    public async Task<ActionResult<AppUser>> GetUserById(int id)
+    [HttpGet("{username}")]
+    public async Task<ActionResult<UserResponseDto>> GetUserByUsername(string username)
     {
-        AppUser? user = await context.Users.FindAsync(id);
+        UserResponseDto? user = await service.GetUserByUsernameAsync(username);
 
-        return user != null ? user : NotFound();
+        return user != null ? Ok(user) : NotFound();
     }
 }
