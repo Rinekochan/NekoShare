@@ -5,61 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4435e15-a144-4b81-8b62-b56afef556f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/app/_models/member.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/_models/photo.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/assets/user.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare.sln" beforeDir="false" afterPath="$PROJECT_DIR$/NekoShare.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Controllers/AccountController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Controllers/BaseApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Controllers/BaseApiController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Controllers/BuggyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Controllers/BuggyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Controllers/UsersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Controllers/WeatherForecastController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/DTOs/Authenticate/AuthenticateRequestDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/DTOs/Authenticate/AuthenticateRequestDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/DTOs/Authenticate/AuthenticateResponseDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/DTOs/Authenticate/AuthenticateResponseDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/DTOs/Photo/PhotoDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/DTOs/Photo/PhotoDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/DTOs/User/UserResponseDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/DTOs/User/UserResponseDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/DataContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/DataContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/Migrations/20241225142310_InitialCreate.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/Migrations/20241225142310_InitialCreate.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/Migrations/20241225142310_InitialCreate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/Migrations/20241225142310_InitialCreate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/Migrations/20241230025047_UserEntityUpdated.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/Migrations/20241230025047_UserEntityUpdated.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/Migrations/20241230025047_UserEntityUpdated.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/Migrations/20241230025047_UserEntityUpdated.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/Migrations/20250106025125_UserEntityAddUniqueUserName.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/Migrations/20250106025125_UserEntityAddUniqueUserName.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/Migrations/20250106025125_UserEntityAddUniqueUserName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/Migrations/20250106025125_UserEntityAddUniqueUserName.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/Migrations/20250106065815_UpdatedUserEntity.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/Migrations/20250106065815_UpdatedUserEntity.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/Migrations/20250106065815_UpdatedUserEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/Migrations/20250106065815_UpdatedUserEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/Migrations/20250106070324_UpdatedUserEntityWithNotNullablePhoto.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/Migrations/20250106070324_UpdatedUserEntityWithNotNullablePhoto.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/Migrations/20250106070324_UpdatedUserEntityWithNotNullablePhoto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/Migrations/20250106070324_UpdatedUserEntityWithNotNullablePhoto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/Migrations/DataContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/Migrations/DataContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/Seed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/Seed.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Data/Seeds/AppUserSeed.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/Seeds/AppUserSeed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Entities/AppUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Entities/AppUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Entities/Photo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Entities/Photo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Errors/ApiException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Errors/ApiException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Extensions/ApplicationServiceExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Extensions/ApplicationServiceExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Extensions/DateTimeExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Extensions/DateTimeExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Extensions/IdentityServiceExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Extensions/IdentityServiceExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Helpers/AutoMapperProfiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Helpers/AutoMapperProfiles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Interfaces/ITokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Interfaces/ITokenService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Interfaces/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Interfaces/IUserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Interfaces/IUserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Interfaces/IUserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Middleware/ExceptionMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Middleware/ExceptionMiddleware.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/NekoShare.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/NekoShare.http" beforeDir="false" afterPath="$PROJECT_DIR$/server/NekoShare.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Repositories/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Repositories/UserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Services/TokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Services/TokenService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Services/UserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/Tests/Services/TokenServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Tests/Services/TokenServiceTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/WeatherForecast.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/WeatherForecast.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/neko.db" beforeDir="false" afterPath="$PROJECT_DIR$/server/neko.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/neko.db-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NekoShare/neko.db-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/_models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/_models/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/_interceptor/error.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/_interceptors/error.interceptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/_models/member.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/_models/member.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/_services/account.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/_services/account.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/errors/test-errors/test-errors.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/errors/test-errors/test-errors.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/home/home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/members/member-detail/member-detail.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/members/member-detail/member-detail.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/members/member-detail/member-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/members/member-detail/member-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/members/member-detail/member-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/members/member-detail/member-detail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/members/member-list/member-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/members/member-list/member-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/members/member-list/member-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/members/member-list/member-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/register/register.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Data/Seeds/AppUserSeed.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/Seeds/AppUserSeed.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,21 +56,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\Learn\\.NET Learn\\NekoShare\\client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "E:/Learn/.NET Learn/NekoShare/client/src/assets",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "ts.external.directory.path": "E:\\Learn\\.NET Learn\\NekoShare\\client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Learn\.NET Learn\NekoShare\client\src\assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Learn\.NET Learn\NekoShare\client\public" />
+      <recent name="E:\Learn\.NET Learn\NekoShare\client\src\app\_interceptors" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -125,7 +103,7 @@
       <workItem from="1736212731812" duration="837000" />
       <workItem from="1736213643442" duration="132000" />
       <workItem from="1736213801886" duration="416000" />
-      <workItem from="1736214251893" duration="291000" />
+      <workItem from="1736214251893" duration="12525000" />
     </task>
     <servers />
   </component>
