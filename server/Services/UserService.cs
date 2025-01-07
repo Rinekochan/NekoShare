@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using server.DTOs.User;
 using server.Entities;
+using server.Enums;
+using server.Exceptions;
 using server.Interfaces;
 
 namespace server.Services;
@@ -23,5 +25,15 @@ public class UserService(IUserRepository userRepository, IMapper mapper) : IUser
     {
         AppUser? user = await userRepository.GetUserByUsernameAsync(username);
         return mapper.Map<UserResponseDto>(user);    
+    }
+
+    public async Task<bool> UpdateUser(UserUpdateDto userDto, string username)
+    {
+        AppUser? user = await userRepository.GetUserByUsernameAsync(username);
+
+        if (user == null) throw new ItemNotFoundException("Could not find ", EntityEnum.User);
+        
+        mapper.Map(userDto, user);
+        return await userRepository.SaveAllAsync();
     }
 }
