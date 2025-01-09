@@ -3,5 +3,6 @@
 public enum EntityEnum
 {
     User,
+    Token,
     Photo
 }

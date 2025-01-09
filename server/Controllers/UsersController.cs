@@ -1,20 +1,21 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using server.DTOs.Photo;
 using server.DTOs.User;
 using server.Enums;
 using server.Exceptions;
+using server.Extensions;
 using server.Interfaces;
 
 namespace server.Controllers;
 
 [Authorize]
-public class UsersController(IUserService service) : BaseApiController
+public class UsersController(IUserService userService) : BaseApiController
 {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<UserResponseDto>>> GetUsers()
     {
-        var users = await service.GetUsersAsync();
+        var users = await userService.GetUsersAsync();
 
         return Ok(users);
     }
@@ -22,7 +23,7 @@ public class UsersController(IUserService service) : BaseApiController
     [HttpGet("{username}")]
     public async Task<ActionResult<UserResponseDto>> GetUserByUsername(string username)
     {
-        UserResponseDto? user = await service.GetUserByUsernameAsync(username);
+        UserResponseDto? user = await userService.GetUserByUsernameAsync(username);
 
         return user != null ? Ok(user) : NotFound();
     }
@@ -30,13 +31,10 @@ public class UsersController(IUserService service) : BaseApiController
     [HttpPut]
     public async Task<ActionResult> UpdateUser(UserUpdateDto userDto)
     {
-        var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-        if (username == null) return BadRequest("Invalid token. Please login again.");
-        
         try
         {
-            if (await service.UpdateUser(userDto, username)) return NoContent();
+            var username = User.GetUsername();
+            if (await userService.UpdateUser(username, userDto)) return NoContent();
         }
         catch (ItemNotFoundException ex)
         {
@@ -44,5 +42,67 @@ public class UsersController(IUserService service) : BaseApiController
         }
 
         return BadRequest("Failed to update the user");
+    }
+
+    [HttpPost("add-photo")]
+    public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
+    {
+        try
+        {
+            var username = User.GetUsername();
+            return CreatedAtAction(nameof(GetUserByUsername), 
+            new {
+                username
+            },
+            await userService.AddPhoto(username, file));
+        }
+        catch (ItemNotFoundException ex)
+        {
+            return BadRequest(ex.Message + Enum.GetName(typeof(EntityEnum), ex.Type));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPut("set-main-photo/{photoId:int}")]
+    public async Task<ActionResult> SetMainPhoto(int photoId)
+    {
+        try
+        {
+            var username = User.GetUsername();
+            if (await userService.SetMainPhoto(username, photoId)) return NoContent();
+        }
+        catch (ItemNotFoundException ex)
+        {
+            return BadRequest(ex.Message + Enum.GetName(typeof(EntityEnum), ex.Type));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+
+        return BadRequest("Cannot set this photo as your main photo");
+    }
+
+    [HttpDelete("delete-photo/{photoId:int}")]
+    public async Task<ActionResult> DeletePhoto(int photoId)
+    {
+        try
+        {
+            var username = User.GetUsername();
+            if (await userService.DeletePhoto(username, photoId)) return NoContent();
+        }
+        catch (ItemNotFoundException ex)
+        {
+            return BadRequest(ex.Message + Enum.GetName(typeof(EntityEnum), ex.Type));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+
+        return BadRequest("Cannot delete your photo");
     }
 }

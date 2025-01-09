@@ -5,6 +5,7 @@ import {AccountService} from '../../_services/account.service';
 import {TabDirective, TabsetComponent} from 'ngx-bootstrap/tabs';
 import {FormsModule, NgForm} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
+import {PhotoEditorComponent} from '../photo-editor/photo-editor.component';
 
 @Component({
   selector: 'app-member-edit',
@@ -13,6 +14,7 @@ import {ToastrService} from 'ngx-toastr';
     TabDirective,
     TabsetComponent,
     FormsModule,
+    PhotoEditorComponent,
   ],
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css'
@@ -50,5 +52,9 @@ export class MemberEditComponent implements OnInit {
         this.editForm?.reset(this.member);
       }
     })
+  }
+
+  onMemberChange(event: Member) {
+    this.member = event;
   }
 }
