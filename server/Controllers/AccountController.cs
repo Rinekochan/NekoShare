@@ -1,50 +1,49 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using server.Data;
-using server.DTOs;
+using server.DTOs.Authenticate;
 using server.Entities;
 using server.Interfaces;
 
 namespace server.Controllers;
 
-public class AccountController(DataContext context, ITokenService tokenService) : BaseApiController
+public class AccountController(DataContext context, ITokenService tokenService, IMapper mapper) : BaseApiController
 {
     [HttpPost("register")]
     public async Task<ActionResult<AuthenticateResponseDto>> Register(AuthenticateRequestDto authenticateRequestDto)
     {
         if (await UserExists(authenticateRequestDto.Username)) return BadRequest("Username already exists");
+        using HMACSHA512 hmac = new HMACSHA512();
 
-        return Ok();
-        // using HMACSHA512 hmac = new HMACSHA512();
-        //
-        // AppUser user = new AppUser
-        // {
-        //     UserName = authenticateRequestDto.Username.ToLower(),
-        //     PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(authenticateRequestDto.Password)),
-        //     PasswordSalt = hmac.Key
-        // };
-        //
-        // // Save changes might be conflicted in case of race condition
-        // try
-        // {
-        //     context.Users.Add(user);
-        //     await context.SaveChangesAsync();
-        // }
-        // catch (DbUpdateException e) when (e.InnerException is SqliteException sqlEx
-        //                                   && (sqlEx.SqliteErrorCode == 2601 || sqlEx.SqliteErrorCode == 2627))
-        // {
-        //     return BadRequest("Username already exists");
-        // }
-        //
-        //
-        // return new AuthenticateResponseDto()
-        // {
-        //     Username = user.UserName,
-        //     Token = tokenService.CreateToken(user)
-        // };
+        var user = mapper.Map<AppUser>(authenticateRequestDto);
+
+        user.UserName = authenticateRequestDto.Username.ToLower();
+        user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(authenticateRequestDto.Password));
+        user.PasswordSalt = hmac.Key;
+        
+        // Save changes might be conflicted in case of race condition
+        try
+        {
+            context.Users.Add(user);
+            await context.SaveChangesAsync();
+        }
+        catch (DbUpdateException e) when (e.InnerException is SqliteException sqlEx
+                                          && (sqlEx.SqliteErrorCode == 2601 || sqlEx.SqliteErrorCode == 2627))
+        {
+            return BadRequest("Username already exists");
+        }
+        
+        
+        return new AuthenticateResponseDto()
+        {
+            Username = user.UserName,
+            Token = tokenService.CreateToken(user),
+            KnownAs = user.KnownAs
+        };
     }
 
     [HttpPost("login")]
@@ -69,6 +68,7 @@ public class AccountController(DataContext context, ITokenService tokenService) 
         {
             Username = user.UserName,
             Token = tokenService.CreateToken(user),
+            KnownAs = user.KnownAs,
             PhotoUrl = user.Photos.FirstOrDefault(photo => photo.IsMain)?.Url
         };
     }
