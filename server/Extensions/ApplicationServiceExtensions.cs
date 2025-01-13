@@ -22,7 +22,7 @@ public static class ApplicationServiceExtensions
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IPhotoService, PhotoService>();
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-        services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
+        services.Configure<CloudinarySettings>(config.GetRequiredSection("CloudinarySettings"));
         
         return services;
     }
