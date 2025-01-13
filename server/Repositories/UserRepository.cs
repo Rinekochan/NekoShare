@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using server.Data;
 using server.Entities;
+using server.Helpers;
 using server.Interfaces;
 
 namespace server.Repositories;
@@ -17,11 +18,29 @@ public class UserRepository(DataContext context) : IUserRepository
         return await context.SaveChangesAsync() > 0;
     }
 
-    public async Task<IEnumerable<AppUser>> GetUsersAsync()
+    public async Task<PagedList<AppUser>> GetUsersAsync(UserParams userParams)
     {
-        return await context.Users
-            .Include(x => x.Photos)
-            .ToListAsync();
+        var query = context.Users.Include(x => x.Photos).AsQueryable();
+
+        query = query.Where(x => x.UserName != userParams.CurrentUsername);
+
+        if (userParams.Gender != null)
+        {
+            query = query.Where(x => x.Gender == userParams.Gender);
+        }
+
+        var minDob = DateOnly.FromDateTime(DateTime.Today.AddYears((-userParams.MaxAge - 1)));
+        var maxDob = DateOnly.FromDateTime(DateTime.Today.AddYears((-userParams.MinAge - 1)));
+
+        query = query.Where(x => x.DateOfBirth >= minDob && x.DateOfBirth <= maxDob);
+
+        query = userParams.OrderBy switch
+        {
+            "created" => query.OrderByDescending(x => x.Created),
+            _ => query.OrderByDescending(x => x.LastActive)
+        };
+        
+        return await PagedList<AppUser>.CreateAsync(query, userParams.PageNumber, userParams.PageSize);
     }
 
     public async Task<AppUser?> GetUserByIdAsync(int id)

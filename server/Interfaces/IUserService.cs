@@ -1,12 +1,13 @@
 ﻿using server.DTOs.Photo;
 using server.DTOs.User;
 using server.Entities;
+using server.Helpers;
 
 namespace server.Interfaces;
 
 public interface IUserService
 {
-    Task<IEnumerable<UserResponseDto>> GetUsersAsync();
+    Task<PagedList<UserResponseDto>> GetUsersAsync(UserParams userParams);
     Task<UserResponseDto?> GetUserByIdAsync(int id);
     Task<UserResponseDto?> GetUserByUsernameAsync(string username);
     Task<bool> UpdateUser(string username, UserUpdateDto userDto);

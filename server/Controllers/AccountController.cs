@@ -14,7 +14,7 @@ namespace server.Controllers;
 public class AccountController(DataContext context, ITokenService tokenService, IMapper mapper) : BaseApiController
 {
     [HttpPost("register")]
-    public async Task<ActionResult<AuthenticateResponseDto>> Register(AuthenticateRequestDto authenticateRequestDto)
+    public async Task<ActionResult<AuthenticateResponseDto>> Register(RegisterRequestDto authenticateRequestDto)
     {
         if (await UserExists(authenticateRequestDto.Username)) return BadRequest("Username already exists");
         using HMACSHA512 hmac = new HMACSHA512();
@@ -42,7 +42,8 @@ public class AccountController(DataContext context, ITokenService tokenService, 
         {
             Username = user.UserName,
             Token = tokenService.CreateToken(user),
-            KnownAs = user.KnownAs
+            KnownAs = user.KnownAs,
+            Gender = user.Gender
         };
     }
 
@@ -69,6 +70,7 @@ public class AccountController(DataContext context, ITokenService tokenService, 
             Username = user.UserName,
             Token = tokenService.CreateToken(user),
             KnownAs = user.KnownAs,
+            Gender = user.Gender,
             PhotoUrl = user.Photos.FirstOrDefault(photo => photo.IsMain)?.Url
         };
     }

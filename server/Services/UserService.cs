@@ -4,6 +4,7 @@ using server.DTOs.User;
 using server.Entities;
 using server.Enums;
 using server.Exceptions;
+using server.Helpers;
 using server.Interfaces;
 using Photo = server.Entities.Photo;
 
@@ -11,10 +12,13 @@ namespace server.Services;
 
 public class UserService(IUserRepository userRepository, IMapper mapper, IPhotoService photoService) : IUserService
 {
-    public async Task<IEnumerable<UserResponseDto>> GetUsersAsync()
+    public async Task<PagedList<UserResponseDto>> GetUsersAsync(UserParams userParams)
     {
-        IEnumerable<AppUser> users = await userRepository.GetUsersAsync();
-        return mapper.Map<IEnumerable<UserResponseDto>>(users);
+        PagedList<AppUser> users = await userRepository.GetUsersAsync(userParams);
+        PagedList<UserResponseDto> usersDto = new PagedList<UserResponseDto>([], users.TotalCount, users.CurrentPage, users.PageSize);
+        
+        mapper.Map(users, usersDto);
+        return usersDto;
     }
 
     public async Task<UserResponseDto?> GetUserByIdAsync(int id)

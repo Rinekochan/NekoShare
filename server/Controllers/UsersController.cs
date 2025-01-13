@@ -5,6 +5,7 @@ using server.DTOs.User;
 using server.Enums;
 using server.Exceptions;
 using server.Extensions;
+using server.Helpers;
 using server.Interfaces;
 
 namespace server.Controllers;
@@ -13,10 +14,13 @@ namespace server.Controllers;
 public class UsersController(IUserService userService) : BaseApiController
 {
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<UserResponseDto>>> GetUsers()
+    public async Task<ActionResult<IEnumerable<UserResponseDto>>> GetUsers([FromQuery] UserParams userParams)
     {
-        var users = await userService.GetUsersAsync();
-
+        userParams.CurrentUsername = User.GetUsername();
+        var users = await userService.GetUsersAsync(userParams);
+        
+        Response.AddPaginationHeader(users);
+        
         return Ok(users);
     }
 
