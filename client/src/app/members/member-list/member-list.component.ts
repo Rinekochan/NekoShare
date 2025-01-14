@@ -2,8 +2,6 @@ import {Component, inject, OnInit} from '@angular/core';
 import {MembersService} from '../../_services/members.service';
 import {MemberCardComponent} from '../member-card/member-card.component';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
-import {AccountService} from '../../_services/account.service';
-import {UserParams} from '../../_models/UserParams';
 import {FormsModule} from '@angular/forms';
 import {ButtonsModule} from 'ngx-bootstrap/buttons';
 
