@@ -30,10 +30,10 @@
       <button class="btn btn-info ms-1" type="button" (click)="resetFilters()">Reset filters</button>
       <div class="col">
         <div class="btn-group float-end">
-          <label type="button" class="btn btn-primary" [(ngModel)]="memberService.userParams().orderBy"
-                 btnRadio="lastActive" (click)="loadMembers()" role="button">Last Active</label>
-          <label type="button" class="btn btn-primary" [(ngModel)]="memberService.userParams().orderBy"
-                 btnRadio="created" (click)="loadMembers()" role="button">Newest Member</label>
+          <button type="button" class="btn btn-primary" [(ngModel)]="memberService.userParams().orderBy"
+                 btnRadio="lastActive" (click)="loadMembers()" name="orderBy">Last Active</button>
+          <button type="button" class="btn btn-primary" [(ngModel)]="memberService.userParams().orderBy"
+                 btnRadio="created" (click)="loadMembers()" name="orderBy">Newest Member</button>
         </div>
       </div>
     </form>
