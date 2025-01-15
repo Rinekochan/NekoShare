@@ -4,6 +4,7 @@ using server.Helpers;
 using server.Interfaces;
 using server.Repositories;
 using server.Services;
+using server.SignalR;
 
 namespace server.Extensions;
 
@@ -26,6 +27,8 @@ public static class ApplicationServiceExtensions
         services.AddScoped<LogUserActivity>();
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         services.Configure<CloudinarySettings>(config.GetRequiredSection("CloudinarySettings"));
+        services.AddSignalR();
+        services.AddSingleton<PresenceTracker>();
         
         return services;
     }
