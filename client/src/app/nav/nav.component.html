@@ -13,6 +13,9 @@
           <li class="nav-item">
             <a routerLink="/messages" routerLinkActive="active" class="nav-link" aria-current="page" href="#">Messages</a>
           </li>
+          <li *appHasRole="['Admin', 'Moderator']" class="nav-item">
+            <a routerLink="/admin" routerLinkActive="active" class="nav-link" aria-current="page" href="#">Admin</a>
+          </li>
         }
         <li class="nav-item">
           <a routerLink="/errors" routerLinkActive="active" class="nav-link" aria-current="page" href="#">Errors</a>
