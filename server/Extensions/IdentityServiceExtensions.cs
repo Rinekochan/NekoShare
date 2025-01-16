@@ -32,7 +32,7 @@ public static class IdentityServiceExtensions
                 {
                     OnMessageReceived = context =>
                     {
-                        var accessToken = context.Request.Query["access-token"];
+                        var accessToken = context.Request.Query["access_token"];
 
                         var path = context.HttpContext.Request.Path;
 
