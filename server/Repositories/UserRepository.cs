@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 using server.Data;
 using server.Entities;
+using server.Extensions;
 using server.Helpers;
 using server.Interfaces;
 
@@ -34,7 +36,7 @@ public class UserRepository(DataContext context) : IUserRepository
             "created" => query.OrderByDescending(x => x.Created),
             _ => query.OrderByDescending(x => x.LastActive)
         };
-        
+
         return await PagedList<AppUser>.CreateAsync(query, userParams.PageNumber, userParams.PageSize);
     }
 
@@ -43,10 +45,17 @@ public class UserRepository(DataContext context) : IUserRepository
         return await context.Users.FindAsync(id);
     }
 
-    public async Task<AppUser?> GetUserByUsernameAsync(string username)
+    public async Task<AppUser?> GetUserByUsernameAsync(string username, string? currentUser)
     {
-        return await context.Users
+        var users = context.Users
             .Include(x => x.Photos)
-            .SingleOrDefaultAsync(user => user.UserName == username);
+            .AsQueryable();
+
+        if (!string.IsNullOrEmpty(currentUser) && username == currentUser)
+        {
+            users.IgnoreQueryFilters();
+        }
+
+        return await users.SingleOrDefaultAsync(user => user.UserName == username);
     }
 }

@@ -27,9 +27,9 @@ public class UserService(IUnitOfWork unitOfWork, IMapper mapper, IPhotoService p
         return mapper.Map<UserResponseDto>(user);
     }
 
-    public async Task<UserResponseDto?> GetUserByUsernameAsync(string username)
+    public async Task<UserResponseDto?> GetUserByUsernameAsync(string username, string? currentUser)
     {
-        AppUser? user = await unitOfWork.UserRepository.GetUserByUsernameAsync(username);
+        AppUser? user = await unitOfWork.UserRepository.GetUserByUsernameAsync(username, currentUser);
         return mapper.Map<UserResponseDto>(user);    
     }
     

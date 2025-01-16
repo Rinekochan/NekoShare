@@ -27,7 +27,7 @@ public class UsersController(IUserService userService) : BaseApiController
     [HttpGet("{username}")]
     public async Task<ActionResult<UserResponseDto>> GetUserByUsername(string username)
     {
-        UserResponseDto? user = await userService.GetUserByUsernameAsync(username);
+        UserResponseDto? user = await userService.GetUserByUsernameAsync(username, User.GetUsername());
 
         return user != null ? Ok(user) : NotFound();
     }

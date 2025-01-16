@@ -9,6 +9,7 @@ public class DataContext(DbContextOptions options)
     : IdentityDbContext<AppUser, AppRole, int, IdentityUserClaim<int>, AppUserRole, IdentityUserLogin<int>,
         IdentityRoleClaim<int>, IdentityUserToken<int>>(options)
 {
+    public DbSet<Photo> Photos { get; set; }                            
     public DbSet<UserLike> Likes { get; set; }
     public DbSet<Message> Messages { get; set; }
     public DbSet<Group> Groups { get; set; }
@@ -22,7 +23,10 @@ public class DataContext(DbContextOptions options)
             .HasMany(ur => ur.UserRoles)
             .WithOne(u => u.User)
             .HasForeignKey(ur => ur.UserId)
-            .IsRequired();        
+            .IsRequired();
+
+        builder.Entity<Photo>()
+            .HasQueryFilter(p => p.IsApproved);
         
         builder.Entity<AppRole>()
             .HasMany(ur => ur.UserRoles)
