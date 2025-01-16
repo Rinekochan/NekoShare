@@ -18,9 +18,9 @@ public class UsersController(IUserService userService) : BaseApiController
     {
         userParams.CurrentUsername = User.GetUsername();
         var users = await userService.GetUsersAsync(userParams);
-        
+
         Response.AddPaginationHeader(users);
-        
+
         return Ok(users);
     }
 
@@ -54,11 +54,12 @@ public class UsersController(IUserService userService) : BaseApiController
         try
         {
             var username = User.GetUsername();
-            return CreatedAtAction(nameof(GetUserByUsername), 
-            new {
-                username
-            },
-            await userService.AddPhoto(username, file));
+            return CreatedAtAction(nameof(GetUserByUsername),
+                new
+                {
+                    username
+                },
+                await userService.AddPhoto(username, file));
         }
         catch (ItemNotFoundException ex)
         {
