@@ -47,27 +47,21 @@ public class MessageRepository(DataContext context, IMapper mapper) : IMessageRe
 
     public async Task<IEnumerable<MessageDto>> GetMessageThread(string current, string partner)
     {
-        var messages = await context.Messages
+        var query = context.Messages
             .Where(x => x.SenderUsername == current && x.RecipientUsername == partner && x.SenderDeleted == false
                         || x.SenderUsername == partner && x.RecipientUsername == current && x.RecipientDeleted == false)
             .OrderBy(x => x.MessageSent)
-            .ProjectTo<MessageDto>(mapper.ConfigurationProvider)
-            .ToListAsync();
+            .AsQueryable();
 
-        var unreadMessages = messages.Where(x => x.DateRead == null && x.RecipientUsername == current).ToList();
+        var unreadMessages = query.Where(x => x.DateRead == null && x.RecipientUsername == current).ToList();
 
         if (unreadMessages.Count != 0)
         {
             unreadMessages.ForEach(x => x.DateRead = DateTime.UtcNow);
-            await context.SaveChangesAsync();
         }
 
-        return mapper.Map<IEnumerable<MessageDto>>(messages);
-    }
-
-    public async Task<bool> SaveAllAsync()
-    {
-        return await context.SaveChangesAsync() > 0;
+        return await query.ProjectTo<MessageDto>(mapper.ConfigurationProvider)
+            .ToListAsync();
     }
 
     public void AddGroup(Group group)

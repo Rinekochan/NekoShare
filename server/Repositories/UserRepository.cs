@@ -13,11 +13,6 @@ public class UserRepository(DataContext context) : IUserRepository
         context.Entry(user).State = EntityState.Modified;
     }
 
-    public async Task<bool> SaveAllAsync()
-    {
-        return await context.SaveChangesAsync() > 0;
-    }
-
     public async Task<PagedList<AppUser>> GetUsersAsync(UserParams userParams)
     {
         var query = context.Users.Include(x => x.Photos).AsQueryable();
