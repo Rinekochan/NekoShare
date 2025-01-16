@@ -43,7 +43,7 @@ public class DataContext(DbContextOptions options)
             .HasOne(s => s.TargetUser)
             .WithMany(l => l.LikedByUsers)
             .HasForeignKey(s => s.TargetUserId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.NoAction);
 
         builder.Entity<Message>()
             .HasOne(x => x.Recipient)
@@ -53,6 +53,6 @@ public class DataContext(DbContextOptions options)
         builder.Entity<Message>()
             .HasOne(x => x.Sender)
             .WithMany(l => l.MessageSent)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }
