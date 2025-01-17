@@ -5,7 +5,7 @@
 ## How to use?
 - Link: https://neko-share-eph2ffhdbqcdcxcw.eastasia-01.azurewebsites.net/
 - The application is pre-seeded for demonstration, you can use this to get through:
-    - demone - Dem0@pps (Moderators)
+    - demoone - Dem0@pps (Moderators)
     - demotwo - Dem0@pps
 
 ## Features
