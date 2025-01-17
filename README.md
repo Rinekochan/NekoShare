@@ -5,7 +5,8 @@
 ## How to use?
 - Link: https://neko-share-eph2ffhdbqcdcxcw.eastasia-01.azurewebsites.net/
 - The application is pre-seeded for demonstration, you can use this to get through:
-    - white - Pa$$w0rd (Moderators)
+    - demone - Dem0@pps (Moderators)
+    - demotwo - Dem0@pps
 
 ## Features
 - This application allows users to find another users in the platform. They can see details, like them, and even message them.
