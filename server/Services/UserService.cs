@@ -15,8 +15,9 @@ public class UserService(IUnitOfWork unitOfWork, IMapper mapper, IPhotoService p
     public async Task<PagedList<UserResponseDto>> GetUsersAsync(UserParams userParams)
     {
         PagedList<AppUser> users = await unitOfWork.UserRepository.GetUsersAsync(userParams);
-        PagedList<UserResponseDto> usersDto = new PagedList<UserResponseDto>([], users.TotalCount, users.CurrentPage, users.PageSize);
-        
+        PagedList<UserResponseDto> usersDto =
+            new PagedList<UserResponseDto>([], users.TotalCount, users.CurrentPage, users.PageSize);
+
         mapper.Map(users, usersDto);
         return usersDto;
     }
@@ -30,22 +31,28 @@ public class UserService(IUnitOfWork unitOfWork, IMapper mapper, IPhotoService p
     public async Task<UserResponseDto?> GetUserByUsernameAsync(string username, string? currentUser)
     {
         AppUser? user = await unitOfWork.UserRepository.GetUserByUsernameAsync(username, currentUser);
-        return mapper.Map<UserResponseDto>(user);    
+        return mapper.Map<UserResponseDto>(user);
     }
-    
+
+    public async Task<UserResponseDto?> GetUserByPhotoId(int photoId)
+    {
+        AppUser? user = await unitOfWork.UserRepository.GetUserByPhotoId(photoId);
+        return mapper.Map<UserResponseDto>(user);
+    }
+
     public async Task<bool> UpdateUser(string username, UserUpdateDto userDto)
     {
-        AppUser user = await unitOfWork.UserRepository.GetUserByUsernameAsync(username) 
-                        ?? throw new ItemNotFoundException("Could not find ", EntityEnum.User);
-        
+        AppUser user = await unitOfWork.UserRepository.GetUserByUsernameAsync(username)
+                       ?? throw new ItemNotFoundException("Could not find ", EntityEnum.User);
+
         mapper.Map(userDto, user);
         return await unitOfWork.Complete();
     }
-    
+
     public async Task<PhotoDto> AddPhoto(string username, IFormFile file)
     {
-        AppUser user = await unitOfWork.UserRepository.GetUserByUsernameAsync(username) 
-                        ?? throw new ItemNotFoundException("Could not find ", EntityEnum.User);
+        AppUser user = await unitOfWork.UserRepository.GetUserByUsernameAsync(username)
+                       ?? throw new ItemNotFoundException("Could not find ", EntityEnum.User);
 
         var result = await photoService.AddPhotoAsync(file);
 
@@ -55,9 +62,10 @@ public class UserService(IUnitOfWork unitOfWork, IMapper mapper, IPhotoService p
         {
             Url = result.SecureUrl.AbsoluteUri,
             PublicId = result.PublicId,
-            IsMain = user.Photos.Count == 0
+            IsMain = false,
+            IsApproved = false
         };
-        
+
         user.Photos.Add(photo);
 
         try
@@ -74,12 +82,12 @@ public class UserService(IUnitOfWork unitOfWork, IMapper mapper, IPhotoService p
 
     public async Task<bool> SetMainPhoto(string username, int photoId)
     {
-        AppUser user = await unitOfWork.UserRepository.GetUserByUsernameAsync(username) 
+        AppUser user = await unitOfWork.UserRepository.GetUserByUsernameAsync(username)
                        ?? throw new ItemNotFoundException("Could not find ", EntityEnum.User);
 
         Photo photo = user.Photos.FirstOrDefault(photo => photo.Id == photoId)
                       ?? throw new ItemNotFoundException("Could not find ", EntityEnum.Photo);
-        
+
         if (photo.IsMain) throw new Exception("This photo is already your main photo");
 
         Photo? currentMain = user.Photos.FirstOrDefault(photo => photo.IsMain);
@@ -91,13 +99,13 @@ public class UserService(IUnitOfWork unitOfWork, IMapper mapper, IPhotoService p
 
     public async Task<bool> DeletePhoto(string username, int photoId)
     {
-        AppUser user = await unitOfWork.UserRepository.GetUserByUsernameAsync(username) 
-                       ?? throw new ItemNotFoundException("Could not find ", EntityEnum.User);    
-        
+        AppUser user = await unitOfWork.UserRepository.GetUserByUsernameAsync(username)
+                       ?? throw new ItemNotFoundException("Could not find ", EntityEnum.User);
+
         Photo photo = user.Photos.FirstOrDefault(photo => photo.Id == photoId)
                       ?? throw new ItemNotFoundException("Could not find ", EntityEnum.Photo);
-        
-        if(photo.IsMain) throw new Exception("You cannot delete your main photo, please switch it before delete");
+
+        if (photo.IsMain) throw new Exception("You cannot delete your main photo, please switch it before delete");
 
         if (photo.PublicId != null)
         {

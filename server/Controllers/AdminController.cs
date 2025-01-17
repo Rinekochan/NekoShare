@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper.Internal;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using server.DTOs.Photo;
 using server.Entities;
+using server.Enums;
+using server.Exceptions;
+using server.Interfaces;
 
 namespace server.Controllers;
 
-public class AdminController(UserManager<AppUser> userManager) : BaseApiController
+[Authorize(Policy = "ModeratePhotoRole")]
+public class AdminController(
+    UserManager<AppUser> userManager,
+    IPhotoService photoService,
+    IUserService userService) : BaseApiController
 {
     [Authorize(Policy = "RequireAdminRole")]
     [HttpGet("users-with-roles")]
@@ -43,16 +52,69 @@ public class AdminController(UserManager<AppUser> userManager) : BaseApiControll
         if (!result.Succeeded) return BadRequest("Failed to add to roles");
 
         result = await userManager.RemoveFromRolesAsync(user, userRoles.Except(selectedRoles));
-        
+
         if (!result.Succeeded) return BadRequest("Failed to remove roles");
 
         return Ok(await userManager.GetRolesAsync(user));
     }
-    
-    [Authorize(Policy = "ModeratePhotoRole")]
+
     [HttpGet("photos-to-moderate")]
     public ActionResult GetPhotosForModeration()
     {
         return Ok("Admins or moderators can see this");
+    }
+
+    [HttpGet("photos-for-approval")]
+    public async Task<ActionResult<IEnumerable<PhotoDto>>> GetPhotosForApproval()
+    {
+        try
+        {
+            var photos = await photoService.GetUnapprovedPhotos();
+
+            return Ok(photos);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500);
+        }
+    }
+
+    [HttpPut("approve/photo")]
+    public async Task<ActionResult> ApprovePhoto(int id)
+    {
+        try
+        {
+            if (await photoService.AprrovePhoto(id))
+            {
+                return Ok();
+            }
+            else return StatusCode(500);
+        }
+        catch (ItemNotFoundException ex)
+        {
+            return BadRequest(ex.Message + Enum.GetName(typeof(EntityEnum), ex.Type));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPut("reject/photo")]
+    public async Task<ActionResult> RejectPhoto(int id)
+    {
+        try
+        {
+            if (await photoService.RejectPhoto(id)) return Ok();
+            else return StatusCode(500);
+        }
+        catch (ItemNotFoundException ex)
+        {
+            return BadRequest(ex.Message + Enum.GetName(typeof(EntityEnum), ex.Type));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 }

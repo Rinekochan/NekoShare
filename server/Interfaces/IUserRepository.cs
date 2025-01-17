@@ -9,4 +9,5 @@ public interface IUserRepository
     Task<PagedList<AppUser>> GetUsersAsync(UserParams userParamss);
     Task<AppUser?> GetUserByIdAsync(int id);
     Task<AppUser?> GetUserByUsernameAsync(string username, string? currentUser = null);
+    Task<AppUser?> GetUserByPhotoId(int photoId);
 }

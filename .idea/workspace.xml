@@ -4,7 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4435e15-a144-4b81-8b62-b56afef556f8" name="Changes" comment="" />
+    <list default="true" id="d4435e15-a144-4b81-8b62-b56afef556f8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/server/DTOs/Photo/PhotoAprrovalRequestDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/Interfaces/IPhotoRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/Repositories/PhotoRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/_models/photo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/_models/photo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/_services/admin.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/_services/admin.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/admin/photo-management/photo-management.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/admin/photo-management/photo-management.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/admin/photo-management/photo-management.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/admin/photo-management/photo-management.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/members/photo-editor/photo-editor.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/members/photo-editor/photo-editor.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/members/photo-editor/photo-editor.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/members/photo-editor/photo-editor.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Controllers/AdminController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Controllers/AdminController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Controllers/UsersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/DTOs/Photo/PhotoDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/DTOs/Photo/PhotoDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Data/UnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Data/UnitOfWork.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Extensions/ApplicationServiceExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Extensions/ApplicationServiceExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Helpers/AutoMapperProfiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Helpers/AutoMapperProfiles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Interfaces/IPhotoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Interfaces/IPhotoService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Interfaces/IUnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Interfaces/IUnitOfWork.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Interfaces/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Interfaces/IUserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Interfaces/IUserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Interfaces/IUserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Repositories/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Repositories/UserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Services/PhotoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Services/PhotoService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Services/UserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/wwwroot/3rdpartylicenses.txt" beforeDir="false" afterPath="$PROJECT_DIR$/server/wwwroot/3rdpartylicenses.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/wwwroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/wwwroot/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/wwwroot/main-CH64CPP6.js" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +61,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Node.js.photo-management.component.ts.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "publish",
@@ -86,6 +114,8 @@
       <workItem from="1736818032154" duration="14140000" />
       <workItem from="1736903695953" duration="10060000" />
       <workItem from="1736990504172" duration="13766000" />
+      <workItem from="1737021202328" duration="578000" />
+      <workItem from="1737087037733" duration="3381000" />
     </task>
     <servers />
   </component>

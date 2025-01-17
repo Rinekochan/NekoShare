@@ -11,7 +11,7 @@ using server.Interfaces;
 namespace server.Controllers;
 
 [Authorize]
-public class UsersController(IUserService userService) : BaseApiController
+public class UsersController(IUserService userService, IPhotoService photoService) : BaseApiController
 {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<UserResponseDto>>> GetUsers([FromQuery] UserParams userParams)
@@ -76,6 +76,10 @@ public class UsersController(IUserService userService) : BaseApiController
     {
         try
         {
+            var photo = await photoService.GetPhotoById(photoId);
+
+            if (!photo.IsApproved) return BadRequest("You cannot set an unapproved photo as a main photo");
+                
             var username = User.GetUsername();
             if (await userService.SetMainPhoto(username, photoId)) return NoContent();
         }

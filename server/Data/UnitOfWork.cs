@@ -6,11 +6,13 @@ public class UnitOfWork(
     DataContext context,
     IUserRepository userRepository,
     IMessageRepository messageRepository,
-    ILikesRepository likesRepository) : IUnitOfWork
+    ILikesRepository likesRepository,
+    IPhotoRepository photoRepository) : IUnitOfWork
 {
     public IUserRepository UserRepository => userRepository;
     public IMessageRepository MessageRepository => messageRepository;
     public ILikesRepository LikesRepository => likesRepository;
+    public IPhotoRepository PhotoRepository => photoRepository;
 
     public async Task<bool> Complete()
     {

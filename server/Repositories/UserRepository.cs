@@ -51,11 +51,21 @@ public class UserRepository(DataContext context) : IUserRepository
             .Include(x => x.Photos)
             .AsQueryable();
 
-        if (!string.IsNullOrEmpty(currentUser) && username == currentUser)
+        if (!string.IsNullOrEmpty(currentUser) && username.Equals(currentUser, StringComparison.OrdinalIgnoreCase))
         {
-            users.IgnoreQueryFilters();
+            await users.IgnoreQueryFilters().LoadAsync();
         }
 
-        return await users.SingleOrDefaultAsync(user => user.UserName == username);
+        return await users
+            .FirstOrDefaultAsync(x => x.UserName == username);
+    }
+
+    public async Task<AppUser?> GetUserByPhotoId(int photoId)
+    {
+        return await context.Users
+            .Include(x => x.Photos)
+            .IgnoreQueryFilters()
+            .FirstOrDefaultAsync(x => x.Photos.Any(p => p.Id == photoId));
+        
     }
 }
