@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">NekoShare</a>
+
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        @if (accountService.currentUser()) {
+          <li class="nav-item">
+            <a routerLink="/members" routerLinkActive="active" class="nav-link" aria-current="page" href="#">Members</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/lists" routerLinkActive="active" class="nav-link" aria-current="page" href="#">Lists</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/messages" routerLinkActive="active" class="nav-link" aria-current="page" href="#">Messages</a>
+          </li>
+          <li *appHasRole="['Admin', 'Moderator']" class="nav-item">
+            <a routerLink="/admin" routerLinkActive="active" class="nav-link" aria-current="page" href="#">Admin</a>
+          </li>
+        }
+        <li class="nav-item">
+          <a routerLink="/errors" routerLinkActive="active" class="nav-link" aria-current="page" href="#">Errors</a>
+        </li>
+      </ul>
+
+    @if (accountService.currentUser()) {
+      <div dropdown class="dropdown">
+        <img class="me-2" src="{{accountService.currentUser()?.photoUrl || './assets/user.png'}}" alt="">
+        <a dropdownToggle class="dropdown-toggle text-light text-decoration-none">
+          Welcome {{accountService.currentUser()?.knownAs}}
+        </a>
+        <div *dropdownMenu class="dropdown-menu">
+          <a routerLink="/member/edit" class="dropdown-item">Edit profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+      </div>
+
+    } @else {
+      <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex">
+        <input name="username" [(ngModel)]="model.username" class="form-control me-2" placeholder="Username">
+        <input name="password" [(ngModel)]="model.password" class="form-control me-2" placeholder="Password"
+               type="password">
+        <button class="btn btn-success" type="submit">Login</button>
+      </form>
+    }
+
+
+  </div>
+</nav>
